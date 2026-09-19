@@ -5,7 +5,7 @@
             <div class="s-footer__copyright">
                 <?php 
                 // Copy right text
-                $copyText = sprintf( __( 'Copyright &copy; %s All rights reserved. | This template is made with %s by <a href="%s" target="_blank">Colorlib</a>', 'medisen' ), date('Y') ,'<i class="fa fa-heart-o" aria-hidden="true"></i>', 'https://colorlib.com' );
+                $copyText = sprintf( __( 'Copyright &copy; %s All rights reserved. | This template is made with %s by <a href="%s" target="_blank">Colorlib</a>', 'medisen' ), date('Y') ,'<i class="fa-regular fa-heart" aria-hidden="true"></i>', 'https://colorlib.com' );
                                             
                 $setCopyright = medisen_opt('medisen_footer_copyright_text');
                 

@@ -60,7 +60,7 @@ class Medisen_Services extends Widget_Base {
                         'name'      => 'icon',
                         'label'     => __( 'Select Icon', 'medisen' ),
                         'type'      => Controls_Manager::ICON,
-                        'default'   => 'fa fa-book'
+                        'default'   => 'fa-solid fa-book'
                     ],
                     [
                         'name'  => 'label',

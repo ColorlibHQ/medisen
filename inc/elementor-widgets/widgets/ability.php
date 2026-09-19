@@ -94,7 +94,7 @@ class Medisen_Ability extends Widget_Base {
                         'label'     => __( 'Select Icon', 'medisen' ),
                         'type'      => Controls_Manager::ICON,
                         'label_block' => true,
-                        'default'   => 'fa fa-book'
+                        'default'   => 'fa-solid fa-book'
                     ],
                     [
                         'name'  => 'abl_title',
