@@ -1,7 +1,17 @@
-(function ($) {
-  "use strict";
+/**
+ * Medisen front-end behaviour, without jQuery.
+ *
+ * The plugin calls keep the options they always had; ColorlibUI provides
+ * drop-in versions of Owl Carousel, Magnific Popup and AjaxChimp that build
+ * the same markup, so the theme's stylesheets apply unchanged.
+ */
+(function () {
+  'use strict';
 
-  $('.popup-youtube, .popup-vimeo').magnificPopup({
+  var UI = window.ColorlibUI;
+  if (!UI) return;
+
+  UI.magnific('.popup-youtube, .popup-vimeo', {
     // disableOn: 700,
     type: 'iframe',
     mainClass: 'mfp-fade',
@@ -10,26 +20,19 @@
     fixedContentPos: false
   });
 
-  $(document).ready(function() {
-    ColorlibUI.enhanceSelects('select');
-  });
+  UI.enhanceSelects('select');
+
   // menu fixed js code
-  $(window).scroll(function () {
-    var window_top = $(window).scrollTop() + 1;
-    if (window_top > 50) {
-      $('.main_menu').addClass('menu_fixed animated fadeInDown');
-    } else {
-      $('.main_menu').removeClass('menu_fixed animated fadeInDown');
-    }
-  });
+  window.addEventListener('scroll', function () {
+    var fixed = window.pageYOffset + 1 > 50;
+    UI.toElements('.main_menu').forEach(function (menu) {
+      ['menu_fixed', 'animated', 'fadeInDown'].forEach(function (name) {
+        menu.classList.toggle(name, fixed);
+      });
+    });
+  }, { passive: true });
 
-$(document).ready(function() {
-  ColorlibUI.enhanceSelects('select');
-});
-
-var review = $('.client_review_part');
-if (review.length) {
-  review.owlCarousel({
+  UI.owl('.client_review_part', {
     items: 1,
     loop: true,
     dots: true,
@@ -37,17 +40,9 @@ if (review.length) {
     autoplayHoverPause: true,
     autoplayTimeout: 5000,
     nav: false,
-    smartSpeed: 2000,
+    smartSpeed: 2000
   });
-}
 
-//------- Mailchimp js --------//  
-function mailChimp() {
-  $('#mc_embed_signup').find('form').ajaxChimp();
-}
-mailChimp();
-
-
-
-
-}(jQuery));
+  //------- Mailchimp js --------//
+  UI.ajaxChimp('#mc_embed_signup form');
+}());

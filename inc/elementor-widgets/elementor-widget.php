@@ -294,15 +294,13 @@ if ( !class_exists( 'Medisen_El_Widgets' ) ) {
             // googleapis js
             wp_register_script( 'maps-googleapis', '//maps.googleapis.com/maps/api/js?key='.esc_attr( $apiKey ) );
 
-            // ajaxchimp js
-            wp_enqueue_script( 'jquery-ajaxchimp', MEDISEN_DIR_ELEMENTOR . 'assets/js/jquery.ajaxchimp.min.js', array('jquery'), '1.0', true );
 
 
             // medisen map custom js
-            wp_register_script( 'medisen-map-custom', MEDISEN_DIR_ELEMENTOR . 'assets/js/map-custom.js', array('jquery'), '1.0', true );
+            wp_register_script( 'medisen-map-custom', MEDISEN_DIR_ELEMENTOR . 'assets/js/map-custom.js', array(), '1.0-s2', true );
 
             // medisen companion main js
-            wp_enqueue_script( 'medisen', MEDISEN_DIR_ELEMENTOR . 'assets/js/medisen-companion-main.js', array( 'jquery', 'jquery-ui-datepicker' ), '1.0', true );
+            wp_enqueue_script( 'medisen', MEDISEN_DIR_ELEMENTOR . 'assets/js/medisen-companion-main.js', array( 'medisen-ui-js' ), '1.0-s2', true );
 
 
             wp_localize_script( 'medisen', 'ajax_object',

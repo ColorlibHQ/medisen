@@ -235,21 +235,27 @@ class Medisen_Testimonial extends Widget_Base {
         if( \Elementor\Plugin::$instance->editor->is_edit_mode() === true  ) {
         ?>
         <script>
-        ( function( $ ){
-            var review = $('.client_review_part');
-            if (review.length) {
-            review.owlCarousel({
-                items: 1,
-                loop: true,
-                dots: true,
-                autoplay: true,
-                autoplayHoverPause: true,
-                autoplayTimeout: 5000,
-                nav: false,
-                smartSpeed: 2000,
-            });
+        (function () {
+            function run() {
+                var UI = window.ColorlibUI;
+                if (!UI) return;
+                UI.owl('.client_review_part', {
+                    items: 1,
+                    loop: true,
+                    dots: true,
+                    autoplay: true,
+                    autoplayHoverPause: true,
+                    autoplayTimeout: 5000,
+                    nav: false,
+                    smartSpeed: 2000
+                });
             }
-        })(jQuery);
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+            } else {
+                run();
+            }
+        })();
         </script>
         <?php 
         }
